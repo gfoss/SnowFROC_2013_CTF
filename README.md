@@ -16,7 +16,7 @@ Developed by:
 	[heath novak]		heath@carcarius.com
 	[chris rossi]		crossi@appliedtrust.com
 
-If you get stuck or to verify flags, see:
+If you get stuck or would like to verify flags, see:
 
         ./help/solutions.txt
         ./help/flags.xlsx
