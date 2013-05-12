@@ -16,12 +16,9 @@ Developed by:
 	[heath novak]		heath@carcarius.com
 	[chris rossi]		crossi@appliedtrust.com
 
-If you get stuck, see:
+If you get stuck or to verify flags, see:
 
-		./help/solutions.txt
-                
-To check flags, see:
-                
-                ./help/flags.xlsx
+        ./help/solutions.txt
+        ./help/flags.xlsx
 
 ----This code is optimized for FreeBSD----
