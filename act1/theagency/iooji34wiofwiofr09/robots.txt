@@ -1,0 +1,25 @@
+# $Id: robots.txt,v 69.2 2200/12/08 $(>. .)>~~~~~~*\\(x_X)//
+#
+# robots.txt
+#
+# _-_         ,,,      /\ __ /\
+#/   ` --.`''`   ````.-ss-...ss
+#|::--                `:--::--:
+#`'::''                -n0MM0n`
+# .::.                 `nNMMh: 
+# .::`                 `-nMMh  
+# :::-`               `.--\/   
+#  `::-..`          `.---`     
+#   `.-.---:.```...--:/`       
+#       +Mmy``..` -Mmy         
+#       :mn      `:mn          5h33p
+#
+#flag=aa2646a667ee1cd83235786dccef4a26
+#
+User-agent: *
+Crawl-delay: 10
+# Directories
+Disallow: /phpmyadmin/
+# Files
+Disallow: /phpmyadmin/index.php
+Disallow: /info.php

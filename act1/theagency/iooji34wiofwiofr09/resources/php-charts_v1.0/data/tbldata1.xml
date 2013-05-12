@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+-
+- phpMyAdmin XML Dump
+- version 3.2.0.1
+- http://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: Feb 14, 2011 at 01:20 AM
+- Server version: 5.1.37
+- PHP Version: 5.3.0
+-->
+
+<!--
+- Database: 'test'
+-->
+<test>
+  <!-- Table tbldata -->
+    <tbldata>
+        <c1>g</c1>
+        <c2>g1</c2>
+        <c3>2</c3>
+    </tbldata>
+    <tbldata>
+        <c1>g</c1>
+        <c2>g2</c2>
+        <c3>3</c3>
+    </tbldata>
+    <tbldata>
+        <c1>g</c1>
+        <c2>g1</c2>
+        <c3>1</c3>
+    </tbldata>
+    <tbldata>
+        <c1>g</c1>
+        <c2>g2</c2>
+        <c3>1</c3>
+    </tbldata>
+    <tbldata>
+        <c1>g</c1>
+        <c2>g3</c2>
+        <c3>6</c3>
+    </tbldata>
+    <tbldata>
+        <c1>g</c1>
+        <c2>g4</c2>
+        <c3>3</c3>
+    </tbldata>
+    <tbldata>
+        <c1>h</c1>
+        <c2>g1</c2>
+        <c3>4</c3>
+    </tbldata>
+    <tbldata>
+        <c1>h</c1>
+        <c2>g2</c2>
+        <c3>2</c3>
+    </tbldata>
+    <tbldata>
+        <c1>h</c1>
+        <c2>g1</c2>
+        <c3>1</c3>
+    </tbldata>
+    <tbldata>
+        <c1>h</c1>
+        <c2>g1</c2>
+        <c3>5</c3>
+    </tbldata>
+    <tbldata>
+        <c1>h</c1>
+        <c2>g3</c2>
+        <c3>8</c3>
+    </tbldata>
+    <tbldata>
+        <c1>h</c1>
+        <c2>g2</c2>
+        <c3>5</c3>
+    </tbldata>
+    <tbldata>
+        <c1>i</c1>
+        <c2>g2</c2>
+        <c3>2</c3>
+    </tbldata>
+    <tbldata>
+        <c1>i</c1>
+        <c2>g2</c2>
+        <c3>5</c3>
+    </tbldata>
+    <tbldata>
+        <c1>i</c1>
+        <c2>g1</c2>
+        <c3>9</c3>
+    </tbldata>
+    <tbldata>
+        <c1>i</c1>
+        <c2>g2</c2>
+        <c3>6</c3>
+    </tbldata>
+    <tbldata>
+        <c1>i</c1>
+        <c2>g4</c2>
+        <c3>5</c3>
+    </tbldata>
+    <tbldata>
+        <c1>i</c1>
+        <c2>g2</c2>
+        <c3>3</c3>
+    </tbldata>
+</test>

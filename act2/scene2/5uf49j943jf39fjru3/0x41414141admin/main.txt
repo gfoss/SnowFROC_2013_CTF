@@ -1,0 +1,3 @@
+<center><br />
+Use the [file] parameter to view these contents within the web page, if so inclined...
+</center><br />

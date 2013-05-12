@@ -1,0 +1,604 @@
+<html>
+<head>
+<title>Document</title>
+<link rel="stylesheet" type="text/css" href="../include/style.css" />
+<script type="text/javascript" src="document.js" ></script>
+</head>
+<body>
+<table>
+<tr>
+<td align="center" valign="top" >
+<table cellspacing='0' cellpadding='0' class="main_tbl" >
+<tr>
+<td>
+<table>
+<tr>
+<td class="site_name" >
+	php<img src='../include/imgs/pie3d.png' />Charts 
+</td>
+<td align="right" >
+	<a href="../gallery">Gallery</a> | <a href="../wizard">Wizard</a> | <a href="../docs">Document</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td class="page_header" >
+Document
+</td>
+</tr>
+<tr>
+<td>
+<table cellspacing='0' cellpadding='0' >
+<tr>
+<td>
+<table>
+<tr>
+<td align="center" >
+<img src="../include/imgs/wizard_prev.png" />
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tr>
+<td align="center" >
+<img src="../include/imgs/diagram.png" />
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td onclick="hideBlock('Variables Summary','varSummary',this)" class='header' >+ Variables Summary</td></tr>
+<tr>
+<td id='varSummary' style='display:none' >
+<table cellspacing="0" class="variable_tbl" cellpadding="3" > 
+ <tr class="variable_header" >
+  <td style="width:10%" >Variable Name</td>
+  <td>Summary</td>
+  <td style="width:15%" >Default Value</td>
+  <td style="width:15%" >Type</td>
+ </tr>
+ <tr>
+  <td>axis_width</td>
+  <td>defines thickness of the x-y axis</td>
+  <td class="align_txt" >2</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>bar_gap</td>
+  <td>gap between two bar</td>
+  <td class="align_txt" >10</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>bar_width</td>
+  <td>width of a bar, if chart
+  width is assigned bar width will be calculated on the basis of chart width
+  for vertical bar chart and chart height for horizontal bar chart</td>
+  <td class="align_txt" >20</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>bg_color</td>
+  <td>background color of the
+  chart</td>
+  <td class="align_txt" >FFFFFF</td>
+  <td>Hexa Code</td>
+ </tr>
+ <tr>
+  <td>chart_height</td>
+  <td>height of the chart; if not
+  assigned then value will be calculated from bar_width for horizontal bar
+  chart; for circular charts height will be calculated from the radius</td>
+  <td class="align_txt" >300</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>chart_thickness</td>
+  <td>to display the chart in 3D
+  view thickness need to be assigned</td>
+  <td class="align_txt" >10</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>chart_width</td>
+  <td>width of the chart; if not
+  assigned then value will be calculated from bar_width for vartical bar chart;
+  for circular charts width will be calculated from the radius</td>
+  <td class="align_txt" >300</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>data</td>
+  <td>this defines the points to
+  draw chart, it can be assigned with simple array or associate array(key value
+  pairs); while assigning associate array keys will be termed as header of
+  tables</td>
+  <td class="align_txt" >Null</td>
+  <td>Array/Associate Array</td>
+ </tr>
+ <tr>
+  <td>data_type</td>
+  <td>types of data user provide,
+  this is associated with data source; array, csv, xml, MySql, MSAccess,
+  PostgreSql, MSSql</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>database_name</td>
+  <td>if data source is a database
+  then name of the database need to be assigned</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>delimiter</td>
+  <td>if data source is csv then
+  delimiter need to be assigned as: &quot;,&quot;, &quot;:&quot;, &quot;|&quot;</td>
+  <td class="align_txt" >,(comma)</td>
+  <td>Char</td>
+ </tr>
+ <tr>
+  <td>dimension</td>
+  <td>dimension of the chart 2D or
+  3D</td>
+  <td class="align_txt" >2D</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>direction</td>
+  <td>direction of the chart, it
+  can be horizontal(h) or vertical(v) and valid for different bar charts</td>
+  <td class="align_txt" >V</td>
+  <td>Char</td>
+ </tr>
+ <tr>
+  <td>doughnut_width</td>
+  <td>width of the doughnut ring</td>
+  <td class="align_txt" >20</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>file_path</td>
+  <td>path of the csv/xml data
+  file, it can be absolute or real path</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>group_col</td>
+  <td>name of the column which is
+  associated with header name of the data table, represents x-axis in bar
+  charts and slice in circular charts</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>header_height</td>
+  <td>height of the chart header,
+  assigned header height and title character height will be compared and the
+  greater one will be considered as actual header height</td>
+  <td class="align_txt" >20</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>increment</td>
+  <td>constant difference between
+  values used for ploting chart</td>
+  <td class="align_txt" >1</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>incrementx</td>
+  <td>constant difference between
+  values of x-axis used for ploting XY chart</td>
+  <td class="align_txt" >1</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>incrementy</td>
+  <td>constant difference between
+  values of y-axis used for ploting XY chart</td>
+  <td class="align_txt" >1</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>label</td>
+  <td>display actual value in the
+  chart, by default it will not be displayed</td>
+  <td class="align_txt" >false</td>
+  <td>Boolean</td>
+ </tr>
+ <tr>
+  <td>label_font_size</td>
+  <td>label font size</td>
+  <td class="align_txt" >1</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>legend_align</td>
+  <td>alignment of legend, it can
+  be one of the following: left, right, top, bottom</td>
+  <td class="align_txt" >bottom</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>line_col</td>
+  <td>color of the xy axis</td>
+  <td class="align_txt" >000000</td>
+  <td>Hexa Code</td>
+ </tr>
+ <tr>
+  <td>line_gap</td>
+  <td>gap between two points in
+  the line chart; if chart width for vetical and chart height for horizontal is
+  assigned then line gap will be calculated on the basis of chart width/chart
+  height for respective chart direction</td>
+  <td class="align_txt" >20</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>margin</td>
+  <td>margin around the chart</td>
+  <td class="align_txt" >20</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>marker</td>
+  <td>display marker for line
+  chart, by default it will be displayed</td>
+  <td class="align_txt" >true</td>
+  <td>Boolean</td>
+ </tr>
+ <tr>
+  <td>output_type</td>
+  <td>different format charts can
+  be generated, value must be one of the following: png, jpg, gif, html, pdf</td>
+  <td class="align_txt" >html</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>password</td>
+  <td>if data source is a database
+  then password for the database need to be assigned if any</td>
+  <td class="align_txt" >null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>percent</td>
+  <td>display bar charts in
+  percent</td>
+  <td class="align_txt" >Null</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>pie_gap</td>
+  <td>gap between each slice of
+  different exploded circuler charts(pie, doughnut)</td>
+  <td class="align_txt" >10</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>query</td>
+  <td>if data source is a database
+  then query to select data from the database must be assigned</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>radius</td>
+  <td>radius of different circular
+  charts(pie, doughnut)</td>
+  <td class="align_txt" >100</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>series_col</td>
+  <td>associated with header
+  column name of the data table, defines sub division of each group column</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>server_name</td>
+  <td>if data source is a database
+  then server name need to be assigned</td>
+  <td class="align_txt" >localhost</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>title</td>
+  <td>title of the chart</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>title_font_size</td>
+  <td>font size of the title</td>
+  <td class="align_txt" >3</td>
+  <td>Integer</td>
+ </tr>
+ <tr>
+  <td>txt_col</td>
+  <td>color of the text displayed
+  on chart</td>
+  <td class="align_txt" >000000</td>
+  <td>Hexa Code</td>
+ </tr>
+ <tr>
+  <td>type</td>
+  <td>type of the chart, must be
+  one of the following: bar, pie, bar_mix, pie_explode, doughnut,
+  doughnut_explode, xy, min_max, histogram, line</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>username</td>
+  <td>if data source is a database
+  then user name of the database need to be assigned, if any</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>value_col</td>
+  <td>associated with header
+  column name of the data table, defines actual value for drawing charts</td>
+  <td class="align_txt" >Null</td>
+  <td>String</td>
+ </tr>
+ <tr>
+  <td>ymax_value</td>
+  <td>changing maximum value to
+  user defined value</td>
+  <td class="align_txt" >Null</td>
+  <td>Integer</td>
+ </tr>
+</table>
+</td>
+</tr>
+
+
+<tr>
+<td onclick="hideBlock('Methods Summary','methodSummary',this)" class='header' >+ Methods Summary</td></tr>
+<tr>
+<td id='methodSummary' style='display:none' >
+<table border=0 cellspacing=0 cellpadding="2" class="methods_tbl" >
+ <tr class="header" >  
+  <td >Method</td>
+  <td>Summary</td>
+ </tr>
+ <tr>
+  <td>__construct</td>
+  <td>assign
+  default value to the variables once object is created</td>
+ </tr>
+ <tr>  
+  <td>isValidDataType</td>
+  <td>Verifies
+  the data provided by the user; if the data is not correct error message will
+  be displayed or default value will be assigned if any</td>
+ </tr>
+ <tr >  
+  <td>getHex</td>
+  <td>converts hex color code to rgb</td>
+ </tr>
+ <tr>  
+  <td>checkDBPara</td>
+  <td>Verifies
+  if user has provided server name, query and database name, display
+  corresponding message if value not provided, applicable only if data source
+  is a database</td>
+ </tr>
+ <tr >  
+  <td>mysql_data</td>
+  <td>gets
+  the data from MySQL database and stores into array</td>
+ </tr>
+ <tr >  
+  <td>oracle_data</td>
+  <td>gets
+  the data from Oracle database and stores into array</td>
+ </tr>
+ <tr >  
+  <td>postgresql_data</td>
+  <td>gets
+  the data from PostgreSql database and stores into array</td>
+ </tr>
+ <tr >
+  <td>msaccess_data</td>
+  <td>gets
+  the data from MS Access database and stores into array</td>
+ </tr>
+ <tr >
+  
+  <td>mssql_data</td>
+  <td>gets
+  the data from MSsql database and stores into array</td>
+ </tr>
+ <tr >  
+  <td>csv_data</td>
+  <td>gets
+  the data from csv file and stores into array</td>
+ </tr>
+ <tr >  
+  <td>xml_data</td>
+  <td>gets
+  the data from xml file and stores into array</td>
+ </tr>
+ <tr>
+  
+  <td>formatData</td>
+  <td>format
+  the data array to be understandable by the API for generating Charts(Pie,
+  Bar, Doughnut)</td>
+ </tr>
+ <tr>
+  
+  <td>formatData2</td>
+  <td>format
+  the data array to be understandable by the API for generating Charts(Min Max)</td>
+ </tr>
+ <tr>
+  
+  <td>formatData3</td>
+  <td>format
+  the data array to be understandable by the API for generating Charts(XY)</td>
+ </tr>
+ <tr >
+  
+  <td>prepareXYDesign</td>
+  <td>Design
+  vertical XY chart</td>
+ </tr>
+ <tr >
+  
+  <td>prepareHXYDesign</td>
+  <td>Design
+  horizontal XY chart</td>
+ </tr>
+ <tr >
+  
+  <td>prepareMinMaxDesign</td>
+  <td>Design
+  vertical Min Max or high- low chart</td>
+ </tr>
+ <tr >
+  
+  <td>prepareHMinMaxDesign</td>
+  <td>Design
+  Horizontal Min Max or high- low chart</td>
+ </tr>
+ <tr >
+  
+  <td>drawGrid</td>
+  <td>Draws
+  grid for XY chart</td>
+ </tr>
+ <tr >
+  
+  <td>prepareLineDesign</td>
+  <td>Design
+  Vertical line chart</td>
+ </tr>
+ <tr >
+  
+  <td>prepareHLineDesign</td>
+  <td>Design
+  Horizontal line chart</td>
+ </tr>
+ <tr>
+  
+  <td>prepareDoughnutDesign</td>
+  <td>Design
+  Doughnut charts(simple doughnut, composite doughnut, doughnut explode)</td>
+ </tr>
+ <tr>
+  
+  <td>preparePieDesign</td>
+  <td>Design
+  Pie charts(Simple Pie, Pie Explode, Pie Cocentric, Pie Concentric Explode) 2D
+  as well as 3D</td>
+ </tr>
+ <tr>
+  
+  <td>prepareBarDesign</td>
+  <td>Design
+  vertical Bar charts (Simple Bar, Composite Bar, Histogram) 2D as well as 3D</td>
+ </tr>
+ <tr>
+  
+  <td>prepareHBarDesign</td>
+  <td>Design
+  Horizontal Bar charts (Simple Bar, Composite Bar, Histogram) 2D as well as 3D</td>
+ </tr>
+ <tr >
+  
+  <td>drawHBarLabel</td>
+  <td>Display
+  label for Horizontal Bar chart</td>
+ </tr>
+ <tr >
+  
+  <td>drawBarLabel</td>
+  <td>Display
+  label for vertical Bar chart</td>
+ </tr>
+ <tr >
+  
+  <td>drawArc</td>
+  <td>Draw
+  antialiasing arc</td>
+ </tr>
+ <tr >
+  
+  <td>drawAxis</td>
+  <td>Draw
+  Axis for 2D/3D Bar, Line charts</td>
+ </tr>
+ <tr >
+  
+  <td>drawVAxisValue</td>
+  <td>Display
+  values for Vertical Axis</td>
+ </tr>
+ <tr >
+  
+  <td>drawHAxisValue</td>
+  <td>Display
+  values for Horizontal Axis</td>
+ </tr>
+ <tr >
+  
+  <td>layoutData</td>
+  <td>Prepare
+  charts initial data and color codes</td>
+ </tr>
+ <tr >
+  
+  <td>drawLegend</td>
+  <td>Display
+  Legend for the charts</td>
+ </tr>
+ <tr>
+  
+  <td>getLegendSize</td>
+  <td>returns
+  the legend width and height as per the no. of legends and alignment</td>
+ </tr>
+ <tr >
+  
+  <td>chartOutput</td>
+  <td>Display
+  charts in different output format(jpg, png, gif, pdf)</td>
+ </tr>
+ <tr >
+  
+  <td>createPDF</td>
+  <td>create
+  pdf file when data output type pdf is selected</td>
+ </tr>
+ <tr >
+  <td>genChart</td>
+  <td>call
+  the methods as per the data inputs provided by the user</td>
+ </tr> 
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

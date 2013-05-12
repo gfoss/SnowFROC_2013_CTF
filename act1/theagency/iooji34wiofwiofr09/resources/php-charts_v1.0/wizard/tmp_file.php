@@ -1,0 +1,30 @@
+<?php
+	require("../lib/phpchart.class.php");
+	$chart=new PHPChart('bar');
+	$chart->type='bar';
+	$chart->dimension='3d';
+	$chart->data_type='xml';
+	$chart->file_path='tbldata1.xml';
+	$chart->group_col='c1';
+	$chart->series_col='c2';
+	$chart->output_type='html';
+	$chart->chart_width=150;
+	$chart->chart_height=150;
+	$chart->bg_color="#FFFFFF";
+	$chart->txt_col="#000000";
+	$chart->line_col="#000000";
+	$chart->header_height=15;
+	$chart->margin=10;
+	$chart->chart_thickness=5;
+	$chart->default_title='bar 3d multi-level';
+	$chart->title_font_size=2;
+	$chart->label=false;
+	$chart->label_font_size=1;
+	$chart->legend_align='right';
+	$chart->direction='V';
+	$chart->marker=true;
+	$chart->bar_width=10;
+	$chart->bar_gap=8;
+	$chart->increment=1;
+	$chart->genChart();
+?>

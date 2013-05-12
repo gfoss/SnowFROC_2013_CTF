@@ -1,0 +1,52 @@
+/* Copyright 2013, Mark Major
+*
+*This program is distributed under the terms of the GNU Affero General Public
+*License */
+
+<!--
+Remember to strip all comments and obfuscate function and variable names.
+Additional obfuscation techniques, such as the addition of extra non-functioning
+functions, unused variables, and other red herrings could be fun too. Lastly,
+run the Javascript through an obfuscator such as the one found at:
+        http://www.daftlogic.com/projects-online-javascript-obfuscator.htm
+-->
+
+<html>
+  <head>
+    <title>Javascript challenge</title>
+    <script>
+
+      // TODO: Remove this decoding function before publishing the challenge.
+      //        It is left here to aid in the creation of alternate passwords.
+      function decode(msg) {
+        var decodedMsg = "";
+        for (i=0; i<msg.length; ++i) {
+          decodedMsg = decodedMsg + String.fromCharCode(msg.charCodeAt(msg.length-i-1) + (msg.length-i));
+        }
+        return decodedMsg;
+      }
+
+      // The encoding method takes in a string, reverses it ("abcde" -> "edcba"),
+      // and decrements the ASCII value based on the letter's position in the string
+      // ("zzzzz" -> "yxwvu").
+      function encode(msg) {
+        var codedMsg = "";
+        for (i=0; i<msg.length; ++i) {
+          codedMsg = codedMsg + String.fromCharCode( msg.charCodeAt(msg.length-i-1) - i - 1 );
+        }
+        return codedMsg;
+      }
+
+      // Sanity check. Remove this bit before publishing.
+      //var test = "zzzzz";
+      //alert('cypher: '+test+'\nencode('+test+'): '+encode(test)+'\ndecode('+test+'): '+decode(test)+'\ndecode(encode('+test+')): '+decode(encode(test)));
+
+      // Note: the \\ is just one character (an escaped slash).
+      var cypher = "jplsZ^hg^UZ\\gQaeN^RQV";
+      var authenticate = "var userPass = prompt('Password:',''); if (userPass == decode(cypher)) { location.href=userPass+'.html'; } else { location.href='wrong.html'; }";
+      eval(authenticate);
+
+    </script>
+  </head>
+  <body>&nbsp;</body>
+</html>

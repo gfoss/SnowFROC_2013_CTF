@@ -1,0 +1,81 @@
+/* Copyright 2013, Mark Major
+*
+*This program is distributed under the terms of the GNU Affero General Public
+*License */
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Easy Log-in Form</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      /* Override some defaults */
+      html, body {
+        background-color: #eee;
+      }
+      body {
+        padding-top: 40px; 
+      }
+      .container {
+        width: 600px;
+      }
+
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px; 
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+	  .login-form {
+		margin-left: 65px;
+	  }
+	
+	  legend {
+		margin-right: -50px;
+		font-weight: bold;
+	  	color: #404040;
+	  }
+
+    </style>
+
+</head>
+<body>
+  <div class="container">
+		<div class="content">
+		 <div class="container">
+     <img alt="logo" src="img/PLA_L2.jpg" style="width:100%;height:100%">
+     </div>
+			<div class="row">
+				<div class="login-form">
+					<h2>Login</h2>
+					<form action="login.php" method="post">
+					<input type="hidden" name="submitted" id="submitted" value="1" />
+						<fieldset>
+							<div class="clearfix">
+								<input type="text" placeholder="Username" id="username" name="username">
+							</div>
+							<div class="clearfix">
+								<input type="password" placeholder="Password" id="password" name="password">
+							</div>
+							<button class="btn primary" value="login" type="submit">Sign in</button>
+							<?php include("login.php"); ?>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> <!-- /container -->
+</body>
+</html>

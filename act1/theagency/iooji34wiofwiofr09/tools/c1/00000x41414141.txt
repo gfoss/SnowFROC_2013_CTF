@@ -1,0 +1,9 @@
+----------
+flag=fc763581e10c309a942476b208432db1
+----------
+
+Hmm... doesn't look like you're using this service as intended...
+
+Think you can do that without a textbox??
+
+<a href="../c2/index.php">go ahead and try</a>
